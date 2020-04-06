@@ -19,6 +19,7 @@ public class MainClass {
     private static TelegramBot bot;
     private static Long chatId;
     private static int adminId = 0;
+    private static String adminName = "";
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<String> numbers = new ArrayList<>();
     private static ArrayList<String> tableNumbers = new ArrayList<>();
@@ -71,6 +72,11 @@ public class MainClass {
     }
 
     private static void executeMessage(Update update) {
+        if (update.message().text().equals("/admin" ) && users.size() != 0) {
+            System.out.println("-------PROSAO SAM USLOV ADMIN-------");
+            SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Admin je  " + adminName));
+
+        }
         if(!inGame) {
             if (update.message().text().equals("/napravi_igru")) {
                 clearData();
@@ -79,6 +85,7 @@ public class MainClass {
                 playersName.add(update.message().from().firstName());
                 users.add(user);
                 adminId = user.getId();
+                adminName = user.getName();
                 SendResponse response = bot.execute(new SendGame(update.message().chat().id(), "autobusi"));
                 chatId = update.message().chat().id();
             }
@@ -161,10 +168,26 @@ public class MainClass {
                 users.get(index).setNumbers(numbs);
                 SendResponse response = bot.execute(new SendMessage(chatId,
                         drinkFrom + " je dao " +drinkTo +
-                                " x gutljaja"));
+                                " " + getSipDrink() +  " gutljaja"));
             }
         }
 
+    }
+
+    private static String getSipDrink() {
+        if(currentNumbIndex<5){
+            return "1";
+        }
+        else if(currentNumbIndex<9){
+            return "2";
+        }
+        else if(currentNumbIndex<12){
+            return "3";
+        }
+        else if(currentNumbIndex<14){
+            return "4";
+        }
+        else return "5";
     }
 
     private static void sendToAll(String message) {
