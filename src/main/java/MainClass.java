@@ -18,6 +18,7 @@ import java.util.ServiceConfigurationError;
 public class MainClass {
     private static TelegramBot bot;
     private static Long chatId;
+    private static int adminId = 0;
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<String> numbers = new ArrayList<>();
     private static ArrayList<String> tableNumbers = new ArrayList<>();
@@ -52,13 +53,18 @@ public class MainClass {
 
     private static void executeCallbackQuery(Update update) {
         if(!inGame){
-            System.out.println("Korisnik koji je pridruzio igri:" + update.callbackQuery().from().firstName());
-            SendResponse response = bot.execute(new SendMessage(chatId, "Korisnik " +
-                    update.callbackQuery().from().firstName() + " se pridruzio igri\nProveri ko je sve u igri sa komandom /igraci"));
-            User user = new User(update.callbackQuery().from().id());
-            user.setName(update.callbackQuery().from().firstName());
-            playersName.add(update.callbackQuery().from().firstName());
-            users.add(user);
+            if(!playersName.contains(update.callbackQuery().from().firstName())) {
+                User user = new User(update.callbackQuery().from().id());
+                user.setName(update.callbackQuery().from().firstName());
+                playersName.add(update.callbackQuery().from().firstName());
+                users.add(user);
+                SendResponse response = bot.execute(new SendMessage(chatId, "Korisnik " +
+                        update.callbackQuery().from().firstName() + " se pridruzio igri\nProveri ko je sve u igri sa komandom /igraci"));
+                System.out.println("Korisnik koji je pridruzio igri:" + update.callbackQuery().from().firstName());
+            } else{
+                SendResponse response = bot.execute(new SendMessage(chatId,
+                        update.callbackQuery().from().firstName() + " već si se pridruzio.\nProveri ko je sve u igri sa komandom /igraci"));
+            }
         }else {
             SendResponse response = bot.execute(new SendMessage(chatId, "Igra je vec u toku...."));
         }
@@ -67,16 +73,22 @@ public class MainClass {
     private static void executeMessage(Update update) {
         if(!inGame) {
             if (update.message().text().equals("/napravi_igru")) {
+                clearData();
+                User user = new User(update.message().from().id());
+                user.setName(update.message().from().firstName());
+                playersName.add(update.message().from().firstName());
+                users.add(user);
+                adminId = user.getId();
                 SendResponse response = bot.execute(new SendGame(update.message().chat().id(), "autobusi"));
                 chatId = update.message().chat().id();
             }
             if (update.message().text().equals("/igraci")) {
                 System.out.println("-------PROSAO SAM USLOV IGRACI-------");
                 System.out.println("Izlistavam igrace i saljem: " + users.toString());
-                SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Prijavljeni igraci " + users.toString()));
+                SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Prijavljeni igraci " + playersName.toString()));
             }
 
-            if (update.message().text().equals("/pokreni" ) && users.size() != 0) {
+            if (update.message().text().equals("/pokreni" ) && users.size() != 0 && update.message().from().id() == adminId) {
                 System.out.println("-------PROSAO SAM USLOV POKRENI-------");
                 SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Igra se pokrece..."));
                 startGame();
@@ -101,23 +113,42 @@ public class MainClass {
             if (update.message().text().equals("/prekini")) {
                 System.out.println("-------PROSAO SAM USLOV PREKINI-------");
                 SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Prekinuli ste igru"));
-                users.clear();
-                numbers.clear();
-                playersName.clear();
-                tableNumbers.clear();
+                clearData();
                 inGame = false;
             }
 
-            if (update.message().text().equals("/dalje" ) && users.size() != 0) {
+            if (update.message().text().equals("/dalje" ) && users.size() != 0 && update.message().from().id() == adminId) {
                 System.out.println("-------PROSAO SAM USLOV DALJE-------");
                 showNextNumber();
                 sendTable();
                 usersDone = 0;
 
             }
+
+            if (update.message().text().equals("/status" ) && users.size() != 0) {
+                System.out.println("-------PROSAO SAM USLOV STATUS-------");
+                sendStatus(update.message().from().id());
+
+            }
         }
+    }
+
+    private static void clearData() {
+        users.clear();
+        numbers.clear();
+        playersName.clear();
+        tableNumbers.clear();
+    }
+
+    private static void sendStatus(int userId) {
+        String message = "Prostali brojevi: ";
+        for(User user : users){
+            message = message + "\n" + user.name + ": " + user.getNumbers().size();
+        }
+        SendResponse response = bot.execute(new SendMessage(userId, message));
 
     }
+
 
     private static void play(String drinkFrom,String drinkTo,long chatId) {
         if(playersName.contains(drinkFrom)) {
@@ -160,9 +191,14 @@ public class MainClass {
     }
 
     private static void showNextNumber() {
-        if(currentNumbIndex < 14 )
+        if(currentNumbIndex < 14 ) {
             currentNumbIndex++;
-        tableNumbers.set(currentNumbIndex,numbers.get(currentNumbIndex));
+            tableNumbers.set(currentNumbIndex, numbers.get(currentNumbIndex));
+        }else{
+            for(User user : users){
+                sendStatus(user.id);
+            }
+        }
 
     }
 
