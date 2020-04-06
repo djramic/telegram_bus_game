@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="telegram_bus_game.main:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9c38810-ad06-4071-ab35-67a154339f6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/telegram_bus_game_main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/module_telegram_bus_game.main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/module_telegram_bus_game.test.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/module_telegram_bus_game.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/MainClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/comands/JoinGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/eight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/five.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/four.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/nine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/one.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/seven.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/six.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/ten.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/three.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/two.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/telegram_bus_game_main_jar/telegram_bus_game.main.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/eight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/five.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/four.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/nine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/one.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/seven.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/six.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/ten.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/three.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/two.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/groovy/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MainClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/comands/JoinGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/eight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/five.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/four.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/nine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/one.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/seven.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/six.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ten.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/three.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/two.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/telegram_bus_game.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/telegram_bus_game.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1a86S330hDcNfL1qLD2zyMDwKIO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="telegram_bus_game" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\djram\Documents\Develop\Java\telegram_bus_game\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainClass" />
+      <module name="telegram_bus_game.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainClass" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9c38810-ad06-4071-ab35-67a154339f6a" name="Default Changelist" comment="" />
+      <created>1586104870042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586104870042</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#Project_Structure" timestamp="1586114053347">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#Project_Structure/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586114053347" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586170614043">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586170614043" />
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1586175184280">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586175184280" />
+    <state x="1823" y="-413" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586115973724" />
+    <state x="413" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586174692107">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174692107" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586105420712">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586105420712" />
+    <state x="449" y="119" key="FileChooserDialogImpl" timestamp="1586174698185">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="449" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174698185" />
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1586180654609">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586180654609" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110004" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1586180654609">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586180654609" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110003" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1586180654608">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586180654608" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110003" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1586180654609">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586180654609" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110004" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
+    <state x="149" y="0" key="SettingsEditor" timestamp="1586174701326">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="149" y="0" key="SettingsEditor/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174701326" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586170599025">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586170599025" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586121138076">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586121138076" />
+  </component>
+</project>

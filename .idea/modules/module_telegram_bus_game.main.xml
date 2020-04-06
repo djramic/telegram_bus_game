@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_telegram_bus_game.main" default="compile.module.telegram_bus_game.main">
+  <dirname property="module.telegram_bus_game.main.basedir" file="${ant.file.module_telegram_bus_game.main}"/>
+  
+  <property name="module.jdk.home.telegram_bus_game.main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.telegram_bus_game.main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.telegram_bus_game.main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.telegram_bus_game.main" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="telegram_bus_game.main.output.dir" value="${module.telegram_bus_game.main.basedir}/../../build/classes/java/main"/>
+  <property name="telegram_bus_game.main.testoutput.dir" value="${module.telegram_bus_game.main.basedir}/../../build/classes/java/main"/>
+  
+  <path id="telegram_bus_game.main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="telegram_bus_game.main.module.production.classpath">
+    <path refid="${module.jdk.classpath.telegram_bus_game.main}"/>
+    <path refid="library.gradle:_org.codehaus.groovy:groovy-all:2.3.11.classpath"/>
+    <path refid="library.gradle:_com.github.pengrad:java-telegram-bot-api:4.7.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:logging-interceptor:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.15.0.classpath"/>
+  </path>
+  
+  <path id="telegram_bus_game.main.runtime.production.module.classpath">
+    <pathelement location="${telegram_bus_game.main.output.dir}"/>
+    <path refid="library.gradle:_org.codehaus.groovy:groovy-all:2.3.11.classpath"/>
+    <path refid="library.gradle:_com.github.pengrad:java-telegram-bot-api:4.7.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:logging-interceptor:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.15.0.classpath"/>
+  </path>
+  
+  <path id="telegram_bus_game.main.module.classpath">
+    <path refid="${module.jdk.classpath.telegram_bus_game.main}"/>
+    <pathelement location="${telegram_bus_game.main.output.dir}"/>
+    <path refid="library.gradle:_org.codehaus.groovy:groovy-all:2.3.11.classpath"/>
+    <path refid="library.gradle:_com.github.pengrad:java-telegram-bot-api:4.7.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:logging-interceptor:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.15.0.classpath"/>
+  </path>
+  
+  <path id="telegram_bus_game.main.runtime.module.classpath">
+    <pathelement location="${telegram_bus_game.main.output.dir}"/>
+    <path refid="library.gradle:_org.codehaus.groovy:groovy-all:2.3.11.classpath"/>
+    <path refid="library.gradle:_com.github.pengrad:java-telegram-bot-api:4.7.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:logging-interceptor:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.12.10.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.15.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.telegram_bus_game.main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.telegram_bus_game.main">
+    <patternset refid="excluded.from.module.telegram_bus_game.main"/>
+  </patternset>
+  
+  <path id="telegram_bus_game.main.module.sourcepath">
+    <dirset dir="${module.telegram_bus_game.main.basedir}/../../src/main">
+      <include name="groovy"/>
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.telegram_bus_game.main" depends="compile.module.telegram_bus_game.main.production,compile.module.telegram_bus_game.main.tests" description="Compile module telegram_bus_game.main"/>
+  
+  <target name="compile.module.telegram_bus_game.main.production" depends="register.custom.compilers" description="Compile module telegram_bus_game.main; production classes">
+    <mkdir dir="${telegram_bus_game.main.output.dir}"/>
+    <javac2 destdir="${telegram_bus_game.main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.telegram_bus_game.main}/javac">
+      <compilerarg line="${compiler.args.telegram_bus_game.main}"/>
+      <bootclasspath refid="telegram_bus_game.main.module.bootclasspath"/>
+      <classpath refid="telegram_bus_game.main.module.production.classpath"/>
+      <src refid="telegram_bus_game.main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.telegram_bus_game.main"/>
+    </javac2>
+    
+    <copy todir="${telegram_bus_game.main.output.dir}">
+      <fileset dir="${module.telegram_bus_game.main.basedir}/../../src/main/groovy">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.telegram_bus_game.main.basedir}/../../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.telegram_bus_game.main.basedir}/../../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.telegram_bus_game.main.tests" depends="register.custom.compilers,compile.module.telegram_bus_game.main.production" description="compile module telegram_bus_game.main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.telegram_bus_game.main" description="cleanup module">
+    <delete dir="${telegram_bus_game.main.output.dir}"/>
+    <delete dir="${telegram_bus_game.main.testoutput.dir}"/>
+  </target>
+</project>
