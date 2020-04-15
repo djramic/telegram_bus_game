@@ -2,11 +2,11 @@ import com.pengrad.telegrambot.BotUtils;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.model.request.Keyboard;
-import com.pengrad.telegrambot.model.request.KeyboardButton;
-import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
+import com.pengrad.telegrambot.model.request.*;
+import com.pengrad.telegrambot.request.AnswerInlineQuery;
 import com.pengrad.telegrambot.request.SendGame;
 import com.pengrad.telegrambot.request.SendMessage;
+import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 import comands.JoinGame;
 
@@ -27,6 +27,7 @@ public class MainClass {
     private static int currentNumbIndex;
     private static ArrayList<Integer> usersDone = new ArrayList<>();
     private static ArrayList<String> playersName = new ArrayList<>();
+    private static boolean lastNumber = false;
 
     public static void main(String args[]) {
 
@@ -45,12 +46,14 @@ public class MainClass {
                     System.out.println("Usao sam u callback Query");
                     executeCallbackQuery(update);
                 }
+
             }
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
         });
 
 
     }
+
 
     private static void executeCallbackQuery(Update update) {
         if(!inGame){
@@ -60,21 +63,49 @@ public class MainClass {
                 playersName.add(update.callbackQuery().from().firstName());
                 users.add(user);
                 SendResponse response = bot.execute(new SendMessage(chatId, "Korisnik " +
-                        update.callbackQuery().from().firstName() + " se pridruzio igri\nProveri ko je sve u igri sa komandom /igraci"));
+                        update.callbackQuery().from().firstName() + " se pridruzio igri.\n" +
+                        "Ukoliko prvi put igras otvori  @mjesec_gejmer_bot i idi na start\nProveri ko je sve u igri sa komandom /igraci"));
                 System.out.println("Korisnik koji je pridruzio igri:" + update.callbackQuery().message().chat().id());
             } else{
                 SendResponse response = bot.execute(new SendMessage(chatId,
                         update.callbackQuery().from().firstName() + " vec si se pridruzio.\nProveri ko je sve u igri sa komandom /igraci"));
             }
         }else {
-            SendResponse response = bot.execute(new SendMessage(update.callbackQuery().message().chat().id(), "Igra je vec u toku...."));
+            //System.out.println("Dobio sam inline upit od" + update.inlineQuery().from().id());
         }
     }
 
     private static void executeMessage(Update update) {
-        if (update.message().text().equals("/admin" ) && users.size() != 0) {
+        if (update.message().text().equals("/admin" )) {
+            //System.out.println("-------PROSAO SAM USLOV ADMIN-------");
+            if(users.size() != 0) {
+                SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Admin je  " + adminName));
+            }else {
+                SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Igra nije kreirana"));
+            }
+
+        }
+
+        if (update.message().text().equals("/start" )) {
+            System.out.println("-------PROSAO SAM USLOV START-------");
+            SendResponse response = bot.execute(new SendMessage(update.message().chat().id(),
+                    "Sacekajte da admin pokrene igru...."
+            ));
+
+        }
+        if (update.message().text().equals("/help" )) {
             System.out.println("-------PROSAO SAM USLOV ADMIN-------");
-            SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Admin je  " + adminName));
+            SendResponse response = bot.execute(new SendMessage(update.message().chat().id(),
+                    "Igra se kreira komandom /napravi_igru i kreator partije je admin." +
+                            "\nIgraci koji su se pridruzili igri prikazuju se komandom /igraci" +
+                            "\nUkoiko prvi put igras moras da otvoris @mjesec_gejmer_bot i ides na start" +
+                            "\nKada se svi igraci pridruze admin pokrece igru komandom /pokreni." +
+                            "\nDa bi dali nekom igracu pice kliknite na /IME ili ukucajte komandu /IME." +
+                            "\nSvaki igrac MORA DA ZAVRSI POTEZ da bi se okrenuo sledeci broj na tabli." +
+                            "\nPotez se zavrsava klikom na /kk ili kucanjem komande /kk." +
+                            "\nKomanda /status ispisuje koliko je kom igracu ostalo brojeva " +
+                            "a komanda /admin govori ko je napravio igru "
+                    ));
 
         }
         if(!inGame) {
@@ -99,10 +130,18 @@ public class MainClass {
                 if( users.size() != 0 && update.message().from().id() == adminId) {
                     System.out.println("-------PROSAO SAM USLOV POKRENI-------");
                     SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Igra se pokrece..."));
+                    startGame();
                 }
-                startGame();
+
             }
         }else {
+
+            if (update.message().text().equals("/napravi_igru") || update.message().text().equals("/napravi_igru@mjesec_gejmer_bot")) {
+                SendResponse response = bot.execute(new SendMessage(update.message().chat().id(),
+                        "Igra je u toku.... U svakom trenutku mozete prekinuti igru komandom /prekini"));
+
+
+            }
 
             if (playersName.contains(update.message().text().substring(1))){
                 System.out.println("-------PROSAO SAM USLOV IGRAC POSTOJI-------");
@@ -117,6 +156,13 @@ public class MainClass {
                     String message = "Odigralo je  " + usersDone.size() +
                             "od" + String.valueOf(users.size());
                     sendToAll(message);
+                }
+                if(usersDone.size() == users.size())
+                {
+                    usersDone.clear();
+                    showNextNumber();
+                    sendTable();
+
                 }
 
             }
@@ -150,6 +196,7 @@ public class MainClass {
         numbers.clear();
         playersName.clear();
         tableNumbers.clear();
+        lastNumber = false;
     }
 
     private static void sendStatus(int userId) {
@@ -227,6 +274,7 @@ public class MainClass {
         }else{
             for(User user : users){
                 sendStatus(user.id);
+                lastNumber = true;
             }
         }
 
@@ -235,21 +283,24 @@ public class MainClass {
     private static void sendTable() {
         SendResponse response = bot.execute(new SendMessage(adminId,"/dalje"));
         for(User user : users) {
-             response = bot.execute(new SendMessage(user.id,"-----------------AUTOBUSI-----------------"));
+            response = bot.execute(new SendMessage(user.id, "-----------------AUTOBUSI-----------------"));
             ArrayList<String> playersCommand = new ArrayList<>();
-            for(String plyCmd : playersName) {
-                plyCmd = "/"+ plyCmd;
+            for (String plyCmd : playersName) {
+                plyCmd = "/" + plyCmd;
                 playersCommand.add(plyCmd);
             }
-            response = bot.execute(new SendMessage(user.id,"Komande: /kk , /status"));
-            response = bot.execute(new SendMessage(user.id,"Igraci: " + playersCommand.toString()));
-            response = bot.execute(new SendMessage(user.id,"Tvoji brojevi: " + user.getNumbers().toString()));
-            response = bot.execute(new SendMessage(user.id,"Tabla: \n" +
-                    tableNumbers.get(0) + " " + tableNumbers.get(1) + " " + tableNumbers.get(2) + " " +tableNumbers.get(3) + " "+tableNumbers.get(4) + "\n"+
-                    tableNumbers.get(5) + " " + tableNumbers.get(6) + " " + tableNumbers.get(7) + " " + tableNumbers.get(8) + "\n"+
-                    tableNumbers.get(9) + " " + tableNumbers.get(10) + " " + tableNumbers.get(11) + "\n" +
-                    tableNumbers.get(12) + " " + tableNumbers.get(13) + "\n" +
-                    tableNumbers.get(14)));
+            if (!lastNumber) {
+                response = bot.execute(new SendMessage(user.id, "Tvoji brojevi: " + user.getNumbers().toString()));
+                response = bot.execute(new SendMessage(user.id, "Igraci: " + playersCommand.toString()));
+                response = bot.execute(new SendMessage(user.id, "Komande: /kk , /status"));
+                response = bot.execute(new SendMessage(user.id, "Tabla: \n" +
+                        tableNumbers.get(0) + " " + tableNumbers.get(1) + " " + tableNumbers.get(2) + " " + tableNumbers.get(3) + " " + tableNumbers.get(4) + "\n" +
+                        tableNumbers.get(5) + " " + tableNumbers.get(6) + " " + tableNumbers.get(7) + " " + tableNumbers.get(8) + "\n" +
+                        tableNumbers.get(9) + " " + tableNumbers.get(10) + " " + tableNumbers.get(11) + "\n" +
+                        tableNumbers.get(12) + " " + tableNumbers.get(13) + "\n" +
+                        tableNumbers.get(14)));
+
+            }
         }
     }
 
