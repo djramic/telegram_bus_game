@@ -5,6 +5,27 @@
       <artifact name="telegram_bus_game.main:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b9c38810-ad06-4071-ab35-67a154339f6a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
@@ -13,11 +34,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/telegram_bus_game_main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/telegram_bus_game_main_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MainClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/telegram_bus_game_main_jar/telegram_bus_game.main.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/telegram_bus_game_main_jar/telegram_bus_game.main.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +71,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -51,6 +78,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="telegram_bus_game" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -76,6 +104,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -89,67 +118,53 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="22" key="#Project_Structure" timestamp="1586114053347">
+    <state x="413" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1602756098562">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="22" key="#Project_Structure/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586114053347" />
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586170614043">
+    <state x="413" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602756098562" />
+    <state x="462" y="105" key="FileChooserDialogImpl" timestamp="1602756326455">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586170614043" />
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1586175184280">
+    <state x="462" y="105" key="FileChooserDialogImpl/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602756326455" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1602769257529">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586175184280" />
-    <state x="1823" y="-413" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586115973724" />
-    <state x="413" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586174692107">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-1920.-663.1280.680/1366.-452.1280.984@0.0.1366.728" timestamp="1596373537192" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602769257529" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1602769257529">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174692107" />
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586105420712">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-1920.-663.1280.680/1366.-452.1280.984@0.0.1366.728" timestamp="1596373537192" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602769257529" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1602769257529">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586105420712" />
-    <state x="449" y="119" key="FileChooserDialogImpl" timestamp="1586174698185">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-1920.-663.1280.680/1366.-452.1280.984@0.0.1366.728" timestamp="1596373537192" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602769257529" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1602769257529">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="449" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174698185" />
-    <state width="1323" height="40" key="GridCell.Tab.0.bottom" timestamp="1586192549739">
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-1920.-663.1280.680/1366.-452.1280.984@0.0.1366.728" timestamp="1596373537192" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602769257529" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1602756332027">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="40" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586192549739" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110004" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
-    <state width="1323" height="40" key="GridCell.Tab.0.center" timestamp="1586192549738">
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602756332027" />
+    <state x="65" y="0" key="new project wizard" timestamp="1602588920210">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="40" key="GridCell.Tab.0.center/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586192549738" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110003" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
-    <state width="1323" height="40" key="GridCell.Tab.0.left" timestamp="1586192549738">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="40" key="GridCell.Tab.0.left/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586192549738" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110003" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
-    <state width="1323" height="40" key="GridCell.Tab.0.right" timestamp="1586192549739">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="40" key="GridCell.Tab.0.right/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586192549739" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1366.728/1366.-478.1280.984@1366.-478.1280.984" timestamp="1586116110004" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586124243951" />
-    <state x="149" y="0" key="SettingsEditor" timestamp="1586174701326">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="149" y="0" key="SettingsEditor/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586174701326" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586192095072">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586192095072" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586121138076">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.-478.1280.984@0.0.1366.728" timestamp="1586121138076" />
+    <state x="65" y="0" key="new project wizard/0.0.1366.728/-304.-1080.1280.680@0.0.1366.728" timestamp="1602588920210" />
   </component>
 </project>

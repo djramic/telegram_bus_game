@@ -16,6 +16,11 @@ import java.util.Collections;
 import java.util.ServiceConfigurationError;
 
 public class MainClass {
+
+    //config
+    private static int playNumbsCount = 5;
+    //*----------------------------------------
+
     private static TelegramBot bot;
     private static Long chatId;
     private static int adminId = 0;
@@ -34,15 +39,15 @@ public class MainClass {
 
         bot.setUpdatesListener(updates -> {
             for(Update update : updates){
-                System.out.println("Usao sam u update");
+                //System.out.println("Usao sam u update");
                 if(update.message()!= null) {
                     if(update.message().text()!= null) {
-                        System.out.println("Primio sam poruku: " + update.message().toString());
+                        //System.out.println("Primio sam poruku: " + update.message().toString());
                         executeMessage(update);
                     }
                 }
                 if(update.callbackQuery()!= null){
-                    System.out.println("Usao sam u callback Query");
+                    //System.out.println("Usao sam u callback Query");
                     executeCallbackQuery(update);
                 }
             }
@@ -61,7 +66,7 @@ public class MainClass {
                 users.add(user);
                 SendResponse response = bot.execute(new SendMessage(chatId, "Korisnik " +
                         update.callbackQuery().from().firstName() + " se pridruzio igri\nProveri ko je sve u igri sa komandom /igraci"));
-                System.out.println("Korisnik koji je pridruzio igri:" + update.callbackQuery().message().chat().id());
+                //System.out.println("Korisnik koji je pridruzio igri:" + update.callbackQuery().message().chat().id());
             } else{
                 SendResponse response = bot.execute(new SendMessage(chatId,
                         update.callbackQuery().from().firstName() + " vec si se pridruzio.\nProveri ko je sve u igri sa komandom /igraci"));
@@ -73,7 +78,7 @@ public class MainClass {
 
     private static void executeMessage(Update update) {
         if (update.message().text().equals("/admin" ) && users.size() != 0) {
-            System.out.println("-------PROSAO SAM USLOV ADMIN-------");
+            //System.out.println("-------PROSAO SAM USLOV ADMIN-------");
             SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Admin je  " + adminName));
 
         }
@@ -90,14 +95,14 @@ public class MainClass {
                 chatId = update.message().chat().id();
             }
             if (update.message().text().equals("/igraci") || update.message().text().equals("/igraci@mjesec_gejmer_bot")) {
-                System.out.println("-------PROSAO SAM USLOV IGRACI-------");
-                System.out.println("Izlistavam igrace i saljem: " + users.toString());
+                //System.out.println("-------PROSAO SAM USLOV IGRACI-------");
+                //System.out.println("Izlistavam igrace i saljem: " + users.toString());
                 SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Prijavljeni igraci " + playersName.toString()));
             }
 
             if (update.message().text().equals("/pokreni")  || update.message().text().equals("/pokreni@mjesec_gejmer_bot") ) {
                 if( users.size() != 0 && update.message().from().id() == adminId) {
-                    System.out.println("-------PROSAO SAM USLOV POKRENI-------");
+                    //System.out.println("-------PROSAO SAM USLOV POKRENI-------");
                     SendResponse response = bot.execute(new SendMessage(update.message().chat().id(), "Igra se pokrece..."));
                 }
                 startGame();
@@ -105,31 +110,38 @@ public class MainClass {
         }else {
 
             if (playersName.contains(update.message().text().substring(1))){
-                System.out.println("-------PROSAO SAM USLOV IGRAC POSTOJI-------");
+                //System.out.println("-------PROSAO SAM USLOV IGRAC POSTOJI-------");
                 play(update.message().from().firstName(),update.message().text().substring(1),update.message().chat().id());
 
             }
 
             if (update.message().text().equals("/kk")) {
-                System.out.println("-------PROSAO SAM USLOV KK-------");
+                //System.out.println("-------PROSAO SAM USLOV KK-------");
                 if(!usersDone.contains(update.message().from().id())) {
                     usersDone.add(update.message().from().id());
                     String message = "Odigralo je  " + usersDone.size() +
                             "od" + String.valueOf(users.size());
                     sendToAll(message);
+                    if(usersDone.size() == users.size()) {
+                        usersDone.clear();
+                        showNextNumber();
+                        sendTable();
+                    }
+
+
                 }
 
             }
 
             if (update.message().text().equals("/prekini") || update.message().text().equals("/prekini@mjesec_gejmer_bot")) {
-                System.out.println("-------PROSAO SAM USLOV PREKINI-------");
+                //System.out.println("-------PROSAO SAM USLOV PREKINI-------");
                 SendResponse response = bot.execute(new SendMessage(chatId, "Prekinuli ste igru"));
                 clearData();
                 inGame = false;
             }
 
             if (update.message().text().equals("/dalje" ) && users.size() != 0 && update.message().from().id() == adminId) {
-                System.out.println("-------PROSAO SAM USLOV DALJE-------");
+                //System.out.println("-------PROSAO SAM USLOV DALJE-------");
                 usersDone.clear();
                 showNextNumber();
                 sendTable();
@@ -138,7 +150,7 @@ public class MainClass {
             }
 
             if (update.message().text().equals("/status" ) && users.size() != 0) {
-                System.out.println("-------PROSAO SAM USLOV STATUS-------");
+                //System.out.println("-------PROSAO SAM USLOV STATUS-------");
                 sendStatus(update.message().from().id());
 
             }
@@ -166,7 +178,7 @@ public class MainClass {
         if(playersName.contains(drinkFrom)) {
             int index = playersName.indexOf(drinkFrom);
             ArrayList<String> numbs = new ArrayList<>(users.get(index).getNumbers());
-            System.out.println("trazim broj" + tableNumbers.get(currentNumbIndex) + " medju"+ numbs.toString()  );
+            //System.out.println("trazim broj" + tableNumbers.get(currentNumbIndex) + " medju"+ numbs.toString()  );
             if(numbs.contains(tableNumbers.get(currentNumbIndex))){
                 int numb_index = numbs.indexOf(tableNumbers.get(currentNumbIndex));
                 numbs.remove(numb_index);
@@ -209,8 +221,8 @@ public class MainClass {
         currentNumbIndex = -1;
         usersDone.clear();
         Collections.shuffle(numbers);
-        System.out.println("Imam listu brojeva:" + numbers.toString());
-        SendResponse response = bot.execute(new SendMessage(users.get(0).id,"Pisem ti"));
+        //System.out.println("Imam listu brojeva:" + numbers.toString());
+        //SendResponse response = bot.execute(new SendMessage(users.get(0).id,"Pisem ti"));
         for(User user : users){
             shareNumers(user);
         }
@@ -261,7 +273,7 @@ public class MainClass {
 
     private static void shareNumers(User user) {
         ArrayList<String> numbs = new ArrayList<>();
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < playNumbsCount; i++){
             String num = numbers.get(0);
             numbers.remove(0);
             numbs.add(num);
@@ -270,48 +282,7 @@ public class MainClass {
     }
 
     private static void initNumbers() {
-        /*numbers.clear();
-        numbers.add("one");
-        numbers.add("one");
-        numbers.add("one");
-        numbers.add("one");
-        numbers.add("two");
-        numbers.add("two");
-        numbers.add("two");
-        numbers.add("two");
-        numbers.add("three");
-        numbers.add("three");
-        numbers.add("three");
-        numbers.add("three");
-        numbers.add("four");
-        numbers.add("four");
-        numbers.add("four");
-        numbers.add("four");
-        numbers.add("five");
-        numbers.add("five");
-        numbers.add("five");
-        numbers.add("five");
-        numbers.add("five");
-        numbers.add("six");
-        numbers.add("six");
-        numbers.add("six");
-        numbers.add("six");
-        numbers.add("seven");
-        numbers.add("seven");
-        numbers.add("seven");
-        numbers.add("seven");
-        numbers.add("eight");
-        numbers.add("eight");
-        numbers.add("eight");
-        numbers.add("eight");
-        numbers.add("nine");
-        numbers.add("nine");
-        numbers.add("nine");
-        numbers.add("nine");
-        numbers.add("ten");
-        numbers.add("ten");
-        numbers.add("ten");
-        numbers.add("ten");*/
+      
         numbers.add("1");
         numbers.add("1");
         numbers.add("1");
