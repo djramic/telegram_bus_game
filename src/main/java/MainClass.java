@@ -126,6 +126,8 @@ public class MainClass {
                         usersDone.clear();
                         showNextNumber();
                         sendTable();
+                        for(User user : users)
+                            user.setDrinksCount(0);
                     }
 
 
@@ -145,6 +147,8 @@ public class MainClass {
                 usersDone.clear();
                 showNextNumber();
                 sendTable();
+                for(User user : users)
+                    user.setDrinksCount(0);
 
 
             }
@@ -188,6 +192,11 @@ public class MainClass {
                             drinkFrom + " ----> " + drinkTo +
                                     ", broj gutljaja :" + getSipDrink()));
                 }
+
+                index = playersName.indexOf(drinkTo);
+                int userDrinkCount = users.get(index).getDrinksCount();
+                users.get(index).setDrinksCount(userDrinkCount + Integer.valueOf(getSipDrink()));
+
             }
         }
 
@@ -247,6 +256,14 @@ public class MainClass {
     private static void sendTable() {
         SendResponse response = bot.execute(new SendMessage(adminId,"/dalje"));
         for(User user : users) {
+            response = bot.execute(new SendMessage(user.id,"------------------------------------------"));
+            for(User userDrinkCount : users) {
+                if(userDrinkCount.getDrinksCount() != 0){
+                    response = bot.execute(new SendMessage(user.id,"" +
+                            "Igrac " + userDrinkCount.getName() + " treba da popije " +
+                             String.valueOf(userDrinkCount.getDrinksCount()) + " gutljaja"));
+                }
+            }
              response = bot.execute(new SendMessage(user.id,"-----------------AUTOBUSI-----------------"));
             ArrayList<String> playersCommand = new ArrayList<>();
             for(String plyCmd : playersName) {
