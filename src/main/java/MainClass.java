@@ -20,7 +20,7 @@ public class MainClass {
     //config
     private static int playNumbsCount = 5;
     //*----------------------------------------
-
+    //for bus
     private static TelegramBot bot;
     private static Long chatId;
     private static int adminId = 0;
@@ -32,6 +32,17 @@ public class MainClass {
     private static int currentNumbIndex;
     private static ArrayList<Integer> usersDone = new ArrayList<>();
     private static ArrayList<String> playersName = new ArrayList<>();
+
+    //*----------------------------------------
+    //for lowHigh
+    private static int max_numb = 0;
+    private static boolean comeOut = true;
+    private static int activeBusPlayerId = 0;
+    private static ArrayList<String> numbersLowHigh = new ArrayList<>();
+    private static int currentNumIndexLowHigh;
+    private static ArrayList<String> busPlayers = new ArrayList<>();
+
+
 
     public static void main(String args[]) {
 
@@ -107,6 +118,9 @@ public class MainClass {
                 }
                 startGame();
             }
+
+
+
         }else {
 
             if (playersName.contains(update.message().text().substring(1))){
@@ -125,7 +139,6 @@ public class MainClass {
                     if(usersDone.size() == users.size()) {
                         usersDone.clear();
                         showNextNumber();
-                        sendTable();
                         for(User user : users)
                             user.setDrinksCount(0);
                     }
@@ -146,7 +159,6 @@ public class MainClass {
                 //System.out.println("-------PROSAO SAM USLOV DALJE-------");
                 usersDone.clear();
                 showNextNumber();
-                sendTable();
                 for(User user : users)
                     user.setDrinksCount(0);
 
@@ -157,6 +169,19 @@ public class MainClass {
                 //System.out.println("-------PROSAO SAM USLOV STATUS-------");
                 sendStatus(update.message().from().id());
 
+            }
+
+            if (update.message().text().equals("/manja")  || update.message().text().equals("/manja@mjesec_gejmer_bot")){
+                System.out.println("uporedjujem " + update.message().from().firstName()+ " sa " + busPlayers.get(activeBusPlayerId));
+                if(update.message().from().firstName().equals(busPlayers.get(activeBusPlayerId))) {
+                    playLow();
+                }
+            }
+
+            if (update.message().text().equals("/veca")  || update.message().text().equals("/veca@mjesec_gejmer_bot") ){
+                if(update.message().from().firstName().equals(busPlayers.get(activeBusPlayerId))) {
+                    playHigh();
+                }
             }
         }
     }
@@ -237,7 +262,7 @@ public class MainClass {
         }
         setTableNumbers();
         showNextNumber();
-        sendTable();
+
 
     }
 
@@ -245,9 +270,11 @@ public class MainClass {
         if(currentNumbIndex < 14 ) {
             currentNumbIndex++;
             tableNumbers.set(currentNumbIndex, numbers.get(currentNumbIndex));
+            sendTable();
         }else{
             for(User user : users){
                 sendStatus(user.id);
+                lowHigh();
             }
         }
 
@@ -340,6 +367,91 @@ public class MainClass {
         numbers.add("10");
         numbers.add("10");
         numbers.add("10");
+
+    }
+
+    private static String findPlayerForLowHigh(){
+        String userForBus = "";
+        for(User user : users){
+            if(user.getNumbers().size() >= max_numb){
+                userForBus = user.getName();
+                max_numb = user.getNumbers().size();
+            }
+        }
+
+        for(User user : users){
+            if(user.name.equals(userForBus)) {
+                user.getNumbers().clear();
+            }
+        }
+        System.out.println("Korisnik koga sam vratio je " + userForBus);
+        return userForBus;
+
+    }
+
+    private static void lowHigh(){
+        String busPlayer = "";
+        do{
+            busPlayer = findPlayerForLowHigh();
+            busPlayers.add(busPlayer);
+        } while (busPlayer != "");
+        sendToAll("U autobus idu :" + busPlayers);
+        initLowHight();
+
+
+    }
+    private static void nexBusPlayer() {
+
+    }
+
+    private static void initLowHight(){
+        numbersLowHigh.clear();
+        numbers.clear();
+        initNumbers();
+        Collections.shuffle(numbers);
+        currentNumIndexLowHigh = -1;
+        for(int i=0 ; i<6; i++ ) {
+            numbersLowHigh.add("x");
+        }
+        showNextNumberLowHight();
+
+    }
+
+    private static void showNextNumberLowHight() {
+        if(currentNumIndexLowHigh<4) {
+            currentNumIndexLowHigh++;
+            numbersLowHigh.set(currentNumIndexLowHigh, numbers.get(currentNumIndexLowHigh));
+            sendToAll("---- Igrac u autobusu : " + busPlayers.get(activeBusPlayerId) + " ----\n /manja   /veca \n" + numbersLowHigh);
+        }
+        else{
+            currentNumIndexLowHigh++;
+            numbersLowHigh.set(currentNumIndexLowHigh, numbers.get(currentNumIndexLowHigh));
+            sendToAll("---- Igrac u autobusu : " + busPlayers.get(activeBusPlayerId) + "\n" + numbersLowHigh);
+            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je izasao iz autobusa ----");
+        }
+    }
+
+    private static void playLow() {
+        if(Integer.valueOf(numbersLowHigh.get(currentNumIndexLowHigh)) >= Integer.valueOf(numbers.get(currentNumIndexLowHigh+1))){
+            showNextNumberLowHight();
+        }
+        else{
+            showNextNumberLowHight();
+            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promašio i treba da popije ----");
+            initLowHight();
+        }
+
+    }
+
+    private static void playHigh() {
+        if(Integer.valueOf(numbersLowHigh.get(currentNumIndexLowHigh)) <= Integer.valueOf(numbers.get(currentNumIndexLowHigh+1))){
+            showNextNumberLowHight();
+        }
+        else{
+            showNextNumberLowHight();
+            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promašio i treba da popije ----");
+            initLowHight();
+        }
 
     }
 
