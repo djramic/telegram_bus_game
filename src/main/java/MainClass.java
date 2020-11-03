@@ -191,6 +191,10 @@ public class MainClass {
         numbers.clear();
         playersName.clear();
         tableNumbers.clear();
+        max_numb = 0;
+        comeOut = true;
+        activeBusPlayerId = 0;
+        busPlayers.clear();
     }
 
     private static void sendStatus(int userId) {
@@ -267,7 +271,7 @@ public class MainClass {
     }
 
     private static void showNextNumber() {
-        if(currentNumbIndex < 14 ) {
+        if(currentNumbIndex < 2 ) {
             currentNumbIndex++;
             tableNumbers.set(currentNumbIndex, numbers.get(currentNumbIndex));
             sendTable();
@@ -384,7 +388,7 @@ public class MainClass {
                 user.getNumbers().clear();
             }
         }
-        System.out.println("Korisnik koga sam vratio je " + userForBus);
+        //System.out.println("Korisnik koga sam vratio je " + userForBus);
         return userForBus;
 
     }
@@ -400,9 +404,7 @@ public class MainClass {
 
 
     }
-    private static void nexBusPlayer() {
 
-    }
 
     private static void initLowHight(){
         numbersLowHigh.clear();
@@ -413,11 +415,11 @@ public class MainClass {
         for(int i=0 ; i<6; i++ ) {
             numbersLowHigh.add("x");
         }
-        showNextNumberLowHight();
+        showNextNumberLowHight(false);
 
     }
 
-    private static void showNextNumberLowHight() {
+    private static void showNextNumberLowHight(boolean hit) {
         if(currentNumIndexLowHigh<4) {
             currentNumIndexLowHigh++;
             numbersLowHigh.set(currentNumIndexLowHigh, numbers.get(currentNumIndexLowHigh));
@@ -427,17 +429,22 @@ public class MainClass {
             currentNumIndexLowHigh++;
             numbersLowHigh.set(currentNumIndexLowHigh, numbers.get(currentNumIndexLowHigh));
             sendToAll("---- Igrac u autobusu : " + busPlayers.get(activeBusPlayerId) + "\n" + numbersLowHigh);
-            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je izasao iz autobusa ----");
+            if(hit == true) {
+                sendToAll("---- Igrac u autobusu : " + busPlayers.get(activeBusPlayerId) + "\n" + numbersLowHigh);
+                sendToAll("---- Igrac " + busPlayers.get(activeBusPlayerId) + " je izasao iz autobusa ----");
+                nextBusPlayer();
+            }
+
         }
     }
 
     private static void playLow() {
         if(Integer.valueOf(numbersLowHigh.get(currentNumIndexLowHigh)) >= Integer.valueOf(numbers.get(currentNumIndexLowHigh+1))){
-            showNextNumberLowHight();
+            showNextNumberLowHight(true);
         }
         else{
-            showNextNumberLowHight();
-            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promašio i treba da popije ----");
+            showNextNumberLowHight(false);
+            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promasio i treba da popije " + currentNumIndexLowHigh + " gutljaja ----" );
             initLowHight();
         }
 
@@ -445,14 +452,24 @@ public class MainClass {
 
     private static void playHigh() {
         if(Integer.valueOf(numbersLowHigh.get(currentNumIndexLowHigh)) <= Integer.valueOf(numbers.get(currentNumIndexLowHigh+1))){
-            showNextNumberLowHight();
+            showNextNumberLowHight(true);
         }
         else{
-            showNextNumberLowHight();
-            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promašio i treba da popije ----");
+            showNextNumberLowHight(false);
+            sendToAll("---- Igrac "+ busPlayers.get(activeBusPlayerId) + " je promasio i treba da popije " + currentNumIndexLowHigh + " gutljaja ----" );
             initLowHight();
         }
 
+    }
+
+    private static void nextBusPlayer(){
+        if(activeBusPlayerId < busPlayers.size() - 2){
+            activeBusPlayerId++;
+            initLowHight();
+        }
+        else{
+            sendToAll("---- Svi igraci su izasli iz autobusa ----");
+        }
     }
 
 
